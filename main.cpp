@@ -2,11 +2,19 @@
 #include <Alimento.hpp>
 #include <Mascota.hpp>
 #include <Dibujo.hpp>
+#include<list>
 using namespace std;
 int main(int argc, char const *argv[])
 {
-    Dibujo dibujo("./assets/kokoa.txt");
-    dibujo.Dibujar();
+    Dibujo dibujo1("./assets/kokoa.txt");
+    dibujo1.Dibujar();
+
+    Dibujo dibujo2("./assets/kokoa.txt");
+    dibujo2.Dibujar();
+    list<Dibujo> dibujos;
+
+    //dibujos.push_front(dibujo1);
+   // dibujos.push_front(dibujo2);
 
     Mascota m1;
     Mascota m2;
@@ -14,10 +22,23 @@ int main(int argc, char const *argv[])
 
     Alimento alimento(5);
 
-    m1.Comer(alimento);
-    m2.Comer(alimento);
-    m3.Comer(alimento);
+    list<Mascota>mascotas;
+    mascotas.push_front(m1);
+    mascotas.push_front(m2);
+    mascotas.push_front(m3);
 
-    cout<<"Mascota"<<m1.LeerEnergia()<<endl;
+    for (auto &&mA : mascotas)
+    {
+        mA.Comer(alimento);
+    }
+
+
+    for (auto &&mascotaActual : mascotas)
+    {
+        cout<<"Mascota"<<mascotaActual.LeerEnergia()<<endl;
+    }
+    
+
+    
     return 0;
 }

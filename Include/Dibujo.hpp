@@ -9,6 +9,10 @@ private:
   fstream file;
 
 public:
+    
+    Dibujo(){
+        
+    }
     Dibujo(string path) {
     file.open(path);
     }
